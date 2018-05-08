@@ -1,3 +1,4 @@
+// Задание 1
 var salaries = {"Vasya": 4500, "Masha": 2000, "Olyaksandr": 2700};
 var maxsalary = 0;
 var nameWithMaxSalary = null;
