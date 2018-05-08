@@ -8,3 +8,4 @@ for (var name in salaries) {
     }
   }
 console.log (nameWithMaxSalary || "нет сотрудников" );
+document.write (nameWithMaxSalary || "нет сотрудников" );
