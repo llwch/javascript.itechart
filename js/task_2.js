@@ -13,5 +13,5 @@ user3 = {
 };
 var userArray = [user1, user2, user3];
 console.log(userArray.sort(function(a, b) {
-return a.age - b.age
+    return a.age - b.age;
 }));
