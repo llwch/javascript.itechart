@@ -27,3 +27,14 @@ select {
 select:hover{
     background-color:red;
 }
+button {
+    text-align:center;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color:rgb(202, 83, 89);
+    font-size: 100%;
+    border-radius: 12px;
+}
+button:hover{
+    background-color:red;
+}
