@@ -33,3 +33,26 @@ function showManu(manufacturer) {
         selectManufacturer.add(option);
     }
 }
+// global
+var manuValue = document.getElementById("manu_list").value;
+var modelValue = document.getElementById("model_list").value;
+var tableLoc = document.getElementById("tableLocation");
+
+//gen report
+function genReport() {
+    createTable(manuValue);
+} 
+
+// create table
+function createTable(list) {
+    
+    var table = document.createElement('table');
+    var tr = document.createElement('tr');
+    var th = document.createElement('th');
+    th.colSpan = "2";
+
+    tableLoc.appendChild(table);
+    table.appendChild(tr);
+    tr.appendChild(th);
+    th.appendChild(document.createTextNode(list));
+}
