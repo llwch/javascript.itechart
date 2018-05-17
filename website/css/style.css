@@ -1,0 +1,29 @@
+body {
+    background-color: seashell; 
+    background-image: url('../image/car.jpg');
+} 
+h2 {
+    text-align: center;
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+label {
+    text-align: left;
+    color: whitesmoke;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+select {
+    background-color: rgb(99, 171, 223);
+    color: white;
+    padding: 14px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    font: arial;
+    position: relative;
+    display: inline-block;
+    text-decoration: underline;
+}
+select:hover {
+    background-color: red;
+}
