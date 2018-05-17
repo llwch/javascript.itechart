@@ -1,19 +1,19 @@
-body{
-    background-color:seashell; 
-    background-image:url('../image/car.jpg');
-   } 
-h2{
-    text-align:center;
-    color:red;
+body {
+    background-color: seashell; 
+    background-image: url('../image/car.jpg');
+} 
+h2 {
+    text-align: center;
+    color: red;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-p{
-    text-align:left;
-    color:whitesmoke;
+label {
+    text-align: left;
+    color: whitesmoke;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 select {
-    background-color:rgb(99, 171, 223);
+    background-color: rgb(99, 171, 223);
     color: white;
     padding: 14px;
     font-size: 14px;
@@ -24,8 +24,8 @@ select {
     display: inline-block;
     text-decoration: underline;
 }
-select:hover{
-    background-color:red;
+select:hover {
+    background-color: red;
 }
 button {
     text-align:center;
