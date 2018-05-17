@@ -1,6 +1,8 @@
 body {
     background-color: seashell; 
     background-image: url('../image/car.jpg');
+    background-repeat: no-repeat;
+    background-size: auto;
 } 
 h2 {
     text-align: center;
@@ -35,6 +37,6 @@ button {
     font-size: 100%;
     border-radius: 12px;
 }
-button:hover{
+button:hover {
     background-color:red;
 }
