@@ -14,13 +14,13 @@ function showManu(manufacturer) {
     var modelArray;
 
     switch (manufacturer) {
-        case "mercedes":
+        case "Mercedes":
             modelArray = mercedesModels
             break;
-        case "toyota":
+        case "Toyota":
             modelArray = toyotaModels
             break;
-        case "lada":
+        case "Lada":
             modelArray = ladaModels
             break;
         default:
@@ -32,4 +32,38 @@ function showManu(manufacturer) {
         option.value = modelArray[i];
         selectManufacturer.add(option);
     }
+}
+// global
+var tableLoc = document.getElementById("tableLocation");
+
+//gen report
+function genReport() {
+    var manuValue = document.getElementById("manu_list").value;
+    var modelValue = document.getElementById("model_list").value;
+    //var sortModels = modelArray.sort();
+    createTable(manuValue,modelValue,'Whut?');
+} 
+
+// create table
+function createTable(list,models,status) {
+    
+    var table = document.createElement('table');
+    var tr = document.createElement('tr');
+    var th = document.createElement('th');
+    th.colSpan = "2";
+    //manufacturer
+    tableLoc.appendChild(table);
+    table.appendChild(tr);
+    tr.appendChild(th);
+    th.appendChild(document.createTextNode(list));
+    //model
+    tr = document.createElement('tr');
+    table.append(tr);
+    td = document.createElement('td');
+    tr.appendChild(td);
+    td.appendChild(document.createTextNode(models));
+    //status
+    td = document.createElement('td');
+    tr.appendChild(td);
+    td.appendChild(document.createTextNode(status));
 }

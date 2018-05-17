@@ -13,14 +13,15 @@
     <label for="manu_list">Select manufacturer and Model below:</label><br><br>
     <select id="manu_list" onchange="showManu(this.value)">
         <option value=""selected>Select manufacturer</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="toyota">Toyota</option>
-        <option value="lada">Lada</option>
+        <option value="Mercedes">Mercedes</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Lada">Lada</option>
     </select>
-    <select id="model_list" onchange="showModel(this.value)">
+    <select id="model_list">
         <option value="">Select Model </option>
     </select>
-    <button onclick="genReport()">Generate Report</button>
+    <button onclick="genReport()">Generate Report</button><br><br>
+    <div id="tableLocation"></div>
     <script src="js/main.js"></script>
 </body>
 
