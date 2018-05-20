@@ -25,6 +25,7 @@ function showModels(manufacturer) {
             break;
         default:
     }
+    var sortModels = modelArray.sort();
 
     for (i = 0; i < modelArray.length; i++) {
         var option = document.createElement('option');
@@ -38,6 +39,7 @@ var tableLoc = document.getElementById("tableLocation");
 
 //gen report
 function genReport() {
+    tableLoc.innerHTML = "";
     var manuValue = document.getElementById("manu_list").value;
     var modelValue = document.getElementById("model_list").value;
     document.getElementById('tableLocation').innerHTML='';
