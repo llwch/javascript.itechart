@@ -54,3 +54,8 @@ th, td {
     border: 1px solid white;
     border-collapse: collapse;
 }
+.errors {
+    text-align: left;
+    color: red;
+    font-weight: bold;
+}
