@@ -25,7 +25,6 @@ function showModels(manufacturer) {
             break;
         default:
     }
-    var sortModels = modelArray.sort();
 
     for (i = 0; i < modelArray.length; i++) {
         var option = document.createElement('option');
@@ -48,30 +47,29 @@ function genReport() {
         tableLoc.appendChild(document.createTextNode('Manufacturer is not selected !!!1111'));
         tableLoc.className = 'errors';
     }else{
-            createTable(manuValue, modelValue, modelStatus());
-        
+        if (modelValue === '') {
+            //placeholder for now
+            tableLoc.appendChild(document.createTextNode('Model is not selected. Select it!'));
+            tableLoc.className = 'errors';
+        }else{
+            createTable(manuValue, modelValue, modelStatus()); 
+        }
     }
 }
 //create status
 function modelStatus(currentModel) {
     var modelValue = document.getElementById("model_list").value;
-    if (modelValue === '') {
-        //placeholder for now
-        tableLoc.appendChild(document.createTextNode('Model is not selected. Select it!'));
-        tableLoc.className = 'errors';
-    }else{
-        for (var i = 0; i < modelValue.length; a++) {
-            var modelNameL = modelValue.length % 2;
+    for (var i = 0; i < modelValue.length; a++) {
+        var modelNameL = modelValue.length % 2;
           
-            if (modelNameL === 0) {
-                var modelStatus = 'Not Available';
-            }else{
-                var modelStatus = 'Available';
-           }
+        if (modelNameL === 0) {
+            var modelStatus = 'Not Available';
+        }else{
+            var modelStatus = 'Available';
+        }
     return modelStatus;
        }
     }
-}
 // create table
 function createTable(list, models, status) {
     
