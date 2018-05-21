@@ -2,6 +2,8 @@ var mercedesModels = ["Mercedes 190", "Mercedes A-class", "Mercedes CLA", "Merce
 var toyotaModels = ["Avensis", "Camry", "Corolla", "Highlander", "Land Cruiser", "RAV 4"];
 var ladaModels = ["XRAY", "Vesta VEDRO", "Kalina", "Vesta Cross", "Granta", "Priora"];
 
+var modelArray;
+
 //switch dropdown 2
 function showModels(manufacturer) {
     var selectManufacturer = document.getElementById('model_list');
@@ -10,8 +12,6 @@ function showModels(manufacturer) {
         selectManufacturer.remove(1);
         ln--;
     }
-
-    var modelArray;
 
     switch (manufacturer) {
         case "Mercedes":
@@ -49,8 +49,10 @@ function genReport() {
     }else{
         if (modelValue === '') {
             //placeholder for now
-            tableLoc.appendChild(document.createTextNode('Model is not selected. Select it!'));
-            tableLoc.className = 'errors';
+            allModels = modelArray.sort();
+            createTable(manuValue, "All models:", allModels); 
+            //tableLoc.appendChild(document.createTextNode('Model is not selected. Select it!'));
+            //tableLoc.className = 'errors';
         }else{
             createTable(manuValue, modelValue, modelStatus()); 
         }
@@ -81,7 +83,6 @@ function createTable(list, models, status) {
     table.appendChild(tr);
     tr.appendChild(th);
     th.appendChild(document.createTextNode(list));
-    tableLoc.appendChild(table);
     //model
     tr = document.createElement('tr');
     table.append(tr);
@@ -92,4 +93,6 @@ function createTable(list, models, status) {
     td = document.createElement('td');
     tr.appendChild(td);
     td.appendChild(document.createTextNode(status));
+    td.className = status === 'Available' ? 'green' : 'red';
+    tableLoc.appendChild(table);
 }
