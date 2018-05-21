@@ -41,8 +41,7 @@ function genReport() {
     tableLoc.innerHTML = "";
     var manuValue = document.getElementById("manu_list").value;
     var modelValue = document.getElementById("model_list").value;
-    document.getElementById('tableLocation').innerHTML='';
-
+    
     if (manuValue === ''){
         tableLoc.appendChild(document.createTextNode('Manufacturer is not selected !!!1111'));
         tableLoc.className = 'errors';
@@ -50,32 +49,23 @@ function genReport() {
         if (modelValue === '') {
             //placeholder for now
             allModels = modelArray.sort();
-            createTable(manuValue, "All models:", allModels); 
+            createHeader(manuValue);
+            for (i = 0; i < modelArray.length; i++) { 
+                createRows(allModels[i], modelStatus(allModels[i])); 
+            } 
             //tableLoc.appendChild(document.createTextNode('Model is not selected. Select it!'));
             //tableLoc.className = 'errors';
-        }else{
-            createTable(manuValue, modelValue, modelStatus()); 
+        } else {
+            createHeader(manuValue);
+            createRows(modelValue, modelStatus()); 
         }
     }
 }
-//create status
-function modelStatus(currentModel) {
-    var modelValue = document.getElementById("model_list").value;
-    for (var i = 0; i < modelValue.length; a++) {
-        var modelNameL = modelValue.length % 2;
-          
-        if (modelNameL === 0) {
-            var modelStatus = 'Not Available';
-        }else{
-            var modelStatus = 'Available';
-        }
-    return modelStatus;
-       }
-    }
 // create table
-function createTable(list, models, status) {
+function createHeader(list) {
     
     var table = document.createElement('table');
+    table.id = "mainTable";
     var tr = document.createElement('tr');
     var th = document.createElement('th');
     th.colSpan = "2";
@@ -83,6 +73,14 @@ function createTable(list, models, status) {
     table.appendChild(tr);
     tr.appendChild(th);
     th.appendChild(document.createTextNode(list));
+    tableLoc.appendChild(table);
+}
+function createRows(models, status) {
+
+    var table = document.getElementById('mainTable');
+    var tr = document.createElement('tr');
+    var th = document.createElement('th');
+
     //model
     tr = document.createElement('tr');
     table.append(tr);
@@ -94,5 +92,18 @@ function createTable(list, models, status) {
     tr.appendChild(td);
     td.appendChild(document.createTextNode(status));
     td.className = status === 'Available' ? 'green' : 'red';
-    tableLoc.appendChild(table);
 }
+//create status
+function modelStatus(currentModel) {
+    var modelValue = document.getElementById("model_list").value;
+    for (var i = 0; i < modelValue.length; a++) {
+        var modelNameL = modelValue.length % 2;
+          
+        if (modelNameL === 0) {
+            var modelAvailable = 'Not Available';
+        } else {
+            var modelAvailable = 'Available';
+        }
+    return modelAvailable;
+       }
+    }
