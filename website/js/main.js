@@ -75,7 +75,6 @@ function createHeader(list) {
 }
 //create rows with model and status
 function createRows(models, status) {
-
     var table = document.getElementById('mainTable');
     //model
     tr = document.createElement('tr');
@@ -93,7 +92,7 @@ function createRows(models, status) {
 function modelStatus(currentModel) {
     var modelValue = document.getElementById("model_list").value;
     var modelNameL = currentModel.length % 2;
-
+    //set status
     if (modelNameL === 0) {
         var modelAvailable = 'Not Available';
     } else {
