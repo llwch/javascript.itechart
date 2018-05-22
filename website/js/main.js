@@ -1,7 +1,6 @@
 var mercedesModels = ["Mercedes 190", "Mercedes A-class", "Mercedes CLA", "Mercedes SLK", "Mercedes E-class", "Mercedes S-class"];
 var toyotaModels = ["Avensis", "Camry", "Corolla", "Highlander", "Land Cruiser", "RAV 4"];
 var ladaModels = ["XRAY", "Vesta VEDRO", "Kalina", "Vesta Cross", "Granta", "Priora"];
-
 var modelArray;
 
 //switch dropdown 2
@@ -41,46 +40,43 @@ function genReport() {
     tableLoc.innerHTML = "";
     var manuValue = document.getElementById("manu_list").value;
     var modelValue = document.getElementById("model_list").value;
-    
-    if (manuValue === ''){
-        tableLoc.appendChild(document.createTextNode('Manufacturer is not selected !!!1111'));
+
+    if (manuValue === '') {
+        tableLoc.appendChild(document.createTextNode('ERROR: Manufacturer is not selected !'));
         tableLoc.className = 'errors';
-    }else{
+    } else {
         if (modelValue === '') {
-            //placeholder for now
+            //show all models if modellist is empty
             allModels = modelArray.sort();
             createHeader(manuValue);
-            for (i = 0; i < modelArray.length; i++) { 
-                createRows(allModels[i], modelStatus(allModels[i])); 
-            } 
+            for (i = 0; i < allModels.length; i++) {
+                createRows(allModels[i], modelStatus(allModels[i]));
+            }
             //tableLoc.appendChild(document.createTextNode('Model is not selected. Select it!'));
             //tableLoc.className = 'errors';
         } else {
             createHeader(manuValue);
-            createRows(modelValue, modelStatus()); 
+            createRows(modelValue, modelStatus(modelValue));
         }
     }
 }
 // create table
 function createHeader(list) {
-    
+    //manufacturer
     var table = document.createElement('table');
     table.id = "mainTable";
     var tr = document.createElement('tr');
     var th = document.createElement('th');
     th.colSpan = "2";
-    //manufacturer
     table.appendChild(tr);
     tr.appendChild(th);
     th.appendChild(document.createTextNode(list));
     tableLoc.appendChild(table);
 }
+//create rows with model and status
 function createRows(models, status) {
 
     var table = document.getElementById('mainTable');
-    var tr = document.createElement('tr');
-    var th = document.createElement('th');
-
     //model
     tr = document.createElement('tr');
     table.append(tr);
@@ -96,14 +92,12 @@ function createRows(models, status) {
 //create status
 function modelStatus(currentModel) {
     var modelValue = document.getElementById("model_list").value;
-    for (var i = 0; i < modelValue.length; a++) {
-        var modelNameL = modelValue.length % 2;
-          
-        if (modelNameL === 0) {
-            var modelAvailable = 'Not Available';
-        } else {
-            var modelAvailable = 'Available';
-        }
-    return modelAvailable;
-       }
+    var modelNameL = currentModel.length % 2;
+
+    if (modelNameL === 0) {
+        var modelAvailable = 'Not Available';
+    } else {
+        var modelAvailable = 'Available';
     }
+    return modelAvailable;
+}
