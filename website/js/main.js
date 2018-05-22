@@ -48,20 +48,20 @@ function genReport() {
         if (modelValue === '') {
             //show all models if modellist is empty
             allModels = modelArray.sort();
-            createHeader(manuValue);
+            createTableWithHeader(manuValue);
             for (i = 0; i < allModels.length; i++) {
                 createRows(allModels[i], modelStatus(allModels[i]));
             }
             //tableLoc.appendChild(document.createTextNode('Model is not selected. Select it!'));
             //tableLoc.className = 'errors';
         } else {
-            createHeader(manuValue);
+            createTableWithHeader(manuValue);
             createRows(modelValue, modelStatus(modelValue));
         }
     }
 }
 // create table
-function createHeader(list) {
+function createTableWithHeader(list) {
     //manufacturer
     var table = document.createElement('table');
     table.id = "mainTable";
@@ -91,9 +91,9 @@ function createRows(models, status) {
 //create status
 function modelStatus(currentModel) {
     var modelValue = document.getElementById("model_list").value;
-    var modelNameL = currentModel.length % 2;
+    var modelNameLength = currentModel.length % 2;
     //set status
-    if (modelNameL === 0) {
+    if (modelNameLength === 0) {
         var modelAvailable = 'Not Available';
     } else {
         var modelAvailable = 'Available';
