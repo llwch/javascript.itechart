@@ -77,13 +77,13 @@ function createHeader(list) {
 function createRows(models, status) {
     var table = document.getElementById('mainTable');
     //model
-    tr = document.createElement('tr');
+    var tr = document.createElement('tr');
     table.append(tr);
-    td = document.createElement('td');
+    var td = document.createElement('td');
     tr.appendChild(td);
     td.appendChild(document.createTextNode(models));
     //status
-    td = document.createElement('td');
+    var td = document.createElement('td');
     tr.appendChild(td);
     td.appendChild(document.createTextNode(status));
     td.className = status === 'Available' ? 'green' : 'red';
