@@ -48,20 +48,20 @@ function genReport() {
         if (modelValue === '') {
             //show all models if modellist is empty
             allModels = modelArray.sort();
-            createHeader(manuValue);
+            createTableWithHeader(manuValue);
             for (i = 0; i < allModels.length; i++) {
                 createRows(allModels[i], modelStatus(allModels[i]));
             }
             //tableLoc.appendChild(document.createTextNode('Model is not selected. Select it!'));
             //tableLoc.className = 'errors';
         } else {
-            createHeader(manuValue);
+            createTableWithHeader(manuValue);
             createRows(modelValue, modelStatus(modelValue));
         }
     }
 }
 // create table
-function createHeader(list) {
+function createTableWithHeader(list) {
     //manufacturer
     var table = document.createElement('table');
     table.id = "mainTable";
@@ -75,16 +75,15 @@ function createHeader(list) {
 }
 //create rows with model and status
 function createRows(models, status) {
-
     var table = document.getElementById('mainTable');
     //model
-    tr = document.createElement('tr');
+    var tr = document.createElement('tr');
     table.append(tr);
-    td = document.createElement('td');
+    var td = document.createElement('td');
     tr.appendChild(td);
     td.appendChild(document.createTextNode(models));
     //status
-    td = document.createElement('td');
+    var td = document.createElement('td');
     tr.appendChild(td);
     td.appendChild(document.createTextNode(status));
     td.className = status === 'Available' ? 'green' : 'red';
@@ -92,9 +91,9 @@ function createRows(models, status) {
 //create status
 function modelStatus(currentModel) {
     var modelValue = document.getElementById("model_list").value;
-    var modelNameL = currentModel.length % 2;
-
-    if (modelNameL === 0) {
+    var modelNameLength = currentModel.length % 2;
+    //set status
+    if (modelNameLength === 0) {
         var modelAvailable = 'Not Available';
     } else {
         var modelAvailable = 'Available';
