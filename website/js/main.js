@@ -1,6 +1,7 @@
 var mercedesModels = ["Mercedes 190", "Mercedes A-class", "Mercedes CLA", "Mercedes SLK", "Mercedes E-class", "Mercedes S-class"];
 var toyotaModels = ["Avensis", "Camry", "Corolla", "Highlander", "Land Cruiser", "RAV 4"];
 var ladaModels = ["XRAY", "Vesta VEDRO", "Kalina", "Vesta Cross", "Granta", "Priora"];
+var manufacturerList = ["Mercedes", "Toyota", "Lada", ""];
 var modelArray;
 
 //switch dropdown 2
@@ -40,29 +41,35 @@ function showModels(manufacturer) {
 // global
 var tableLoc = document.getElementById("tableLocation");
 
+        //if (modelArray.includes(modelValue)){
+           // tableLoc.appendChild(document.createTextNode("ERROR: Specified model doesn't exist in the selected manufacturer"));
+           // tableLoc.className = 'errors';
+
 //gen report
 function genReport() {
     tableLoc.innerHTML = "";
     var manuValue = document.getElementById("manu_list").value;
     var modelValue = document.getElementById("model_list").value;
-
-    if (manuValue === '') {
-        tableLoc.appendChild(document.createTextNode('ERROR: Manufacturer is not selected !'));
-        tableLoc.className = 'errors';
-    } else {
-        if (modelValue === '') {
-            //show all models if modellist is empty
-            allModels = modelArray.sort();
-            createTableWithHeader(manuValue);
-            for (i = 0; i < allModels.length; i++) {
-                createRows(allModels[i], modelStatus(allModels[i]));
-            }
-            //tableLoc.appendChild(document.createTextNode('Model is not selected. Select it!'));
-            //tableLoc.className = 'errors';
+    if (manufacturerList.includes(manuValue)) {
+        if (manuValue === '') {
+            tableLoc.appendChild(document.createTextNode('ERROR: Manufacturer is not selected !'));
+            tableLoc.className = 'errors';
         } else {
-            createTableWithHeader(manuValue);
-            createRows(modelValue, modelStatus(modelValue));
+            if (modelValue === '') {
+                //show all models if modellist is empty
+                allModels = modelArray.sort();
+                createTableWithHeader(manuValue);
+                for (i = 0; i < allModels.length; i++) {
+                    createRows(allModels[i], modelStatus(allModels[i]));
+                }
+            } else {
+                createTableWithHeader(manuValue);
+                createRows(modelValue, modelStatus(modelValue));
+            }
         }
+    } else {
+        tableLoc.appendChild(document.createTextNode('ERROR: No data!'));
+        tableLoc.className = 'errors';
     }
 }
 // create table
