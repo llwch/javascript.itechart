@@ -3,7 +3,6 @@ var toyotaModels = ["Avensis", "Camry", "Corolla", "Highlander", "Land Cruiser",
 var ladaModels = ["XRAY", "Vesta VEDRO", "Kalina", "Vesta Cross", "Granta", "Priora"];
 var manufacturerList = ["Mercedes", "Toyota", "Lada", ""];
 var modelArray;
-
 //switch dropdown 2
 function showModels(manufacturer) {
     var selectModel = document.getElementById('model_list');
@@ -12,7 +11,6 @@ function showModels(manufacturer) {
         selectModel.remove(1);
         ln--;
     }
-
     switch (manufacturer) {
         case "Mercedes":
             modelArray = mercedesModels;
@@ -25,7 +23,6 @@ function showModels(manufacturer) {
             break;
         default:
     }
-
     for (i = 0; i < modelArray.length; i++) {
         var option = document.createElement('option');
         option.text = modelArray[i];
@@ -40,11 +37,6 @@ function showModels(manufacturer) {
 }
 // global
 var tableLoc = document.getElementById("tableLocation");
-
-        //if (modelArray.includes(modelValue)){
-           // tableLoc.appendChild(document.createTextNode("ERROR: Specified model doesn't exist in the selected manufacturer"));
-           // tableLoc.className = 'errors';
-
 //gen report
 function genReport() {
     tableLoc.innerHTML = "";
@@ -63,8 +55,14 @@ function genReport() {
                     createRows(allModels[i], modelStatus(allModels[i]));
                 }
             } else {
-                createTableWithHeader(manuValue);
-                createRows(modelValue, modelStatus(modelValue));
+                if (modelArray.includes(modelValue)) {
+                    createTableWithHeader(manuValue);
+                    createRows(modelValue, modelStatus(modelValue));
+                } else {    
+                    tableLoc.appendChild(document.createTextNode(
+                        "ERROR: Specified model doesn't exist in the selected manufacturer"));
+                    tableLoc.className = 'errors';
+                }
             }
         }
     } else {
@@ -86,7 +84,7 @@ function createTableWithHeader(list) {
     tableLoc.appendChild(table);
 }
 //create rows with model and status
-function createRows(models, status) {createRows
+function createRows(models, status) {
     var table = document.getElementById('mainTable');
     //model
     var tr = document.createElement('tr');
