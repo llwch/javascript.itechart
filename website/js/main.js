@@ -31,6 +31,11 @@ function showModels(manufacturer) {
         option.value = modelArray[i];
         selectModel.add(option);
     }
+    //add invalid model
+    var option = document.createElement('option');
+        option.text = 'invalid model';
+        option.value = 'invalidModel';
+        selectModel.add(option);
 }
 // global
 var tableLoc = document.getElementById("tableLocation");
@@ -74,7 +79,7 @@ function createTableWithHeader(list) {
     tableLoc.appendChild(table);
 }
 //create rows with model and status
-function createRows(models, status) {
+function createRows(models, status) {createRows
     var table = document.getElementById('mainTable');
     //model
     var tr = document.createElement('tr');
