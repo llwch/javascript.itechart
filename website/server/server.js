@@ -1,7 +1,9 @@
 const http = require('http');
 const fs = require('fs');
-const hostname = '127.0.0.1';
-const port = 8080;
+const url = require ('url');
+const config = JSON.parse(fs.readFileSync('config.json'));
+const hostname = config.ip;
+const port = config.port;
 const server = http.createServer();
 var showSite = fs.readFileSync('/Users/tibraid/Documents/javascript.itechart/website/index.html');
 
